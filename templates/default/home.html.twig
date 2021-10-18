@@ -1,6 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
+
+    <div id="login-users-help" class="panel panel-default">
+        <div class="panel-body">
+            <p>
+                Load Fixure to add dummy login users and feed dummy content<br/>
+
+                <code class="console">$ php bin/console doctrine:fixtures:load</code>
+            </p>
+
+            <p>
+                Console Command to  create feed content<br/>
+
+                <code class="console">$ php bin/console app:extract-feed</code>
+            </p>
+
+            <p>
+                <span class="label label-success">{{ 'note'|trans }}</span>
+                Click on Admin and login by admin user provided credentials in login page to add feeds URLS <br/>
+            </p>
+        </div>
+    </div>
+
     <h1>Latest Curated Feeds : </h1><br/>
 
     {% for feed in latestFeeds %}
