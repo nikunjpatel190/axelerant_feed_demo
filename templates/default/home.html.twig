@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1>Latest Curated Feeds : </h1><br/>
+
+    {% for feed in latestFeeds %}
+        <article class="post">
+            <h4>
+                <a href="{{ path('home_index', {slug: feed.slug}) }}">
+                    {{ feed.title }}
+                </a>
+            </h4>
+
+            <p class="post-metadata">
+                <span class="metadata"><i class="fa fa-calendar"></i> {{ feed.publishedAt }}</span>
+                <span class="metadata"><i class="fa fa-user"></i> {{ feed.author }}</span>
+            </p>
+
+            {#{{ feed.content }}#}
+        </article>
+    {% else %}
+        <div class="well">{{ 'feed.no_feed_found'|trans }}</div>
+    {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}

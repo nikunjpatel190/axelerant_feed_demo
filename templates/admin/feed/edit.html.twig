@@ -1,0 +1,12 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body_id 'admin_feed_edit' %}
+
+{% block main %}
+    <h1>{{ 'title.edit_feed'|trans({'%id%': feed.id}) }}</h1>
+
+    {{ include('admin/feed/_form.html.twig', {
+        form: form,
+        button_label: 'action.save'|trans,
+    }, with_context = false) }}
+{% endblock %}

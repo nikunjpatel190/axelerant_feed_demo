@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="title.feed_list">
+                <source>title.feed_list</source>
+                <target>Feed List</target>
+            </trans-unit>
+            <trans-unit id="label.feed_name">
+                <source>label.feed_name</source>
+                <target>Feed Name</target>
+            </trans-unit>
+            <trans-unit id="label.feed_url">
+                <source>label.feed_url</source>
+                <target>Feed URL</target>
+            </trans-unit>
+            <trans-unit id="label.feed_status">
+                <source>label.feed_status</source>
+                <target>Status</target>
+            </trans-unit>
+            <trans-unit id="label.created_at">
+                <source>label.created_at</source>
+                <target>Created At</target>
+            </trans-unit>
+            <trans-unit id="label.updated_at">
+                <source>label.updated_at</source>
+                <target>Updated At</target>
+            </trans-unit>
+            <trans-unit id="feed.no_feed_found">
+                <source>feed.no_feed_found</source>
+                <target>No Feed found.</target>
+            </trans-unit>
+            <trans-unit id="action.add_feed">
+                <source>action.add_feed</source>
+                <target>Add Feed URL</target>
+            </trans-unit>
+            <trans-unit id="feed.created_successfully">
+                <source>feed.created_successfully</source>
+                <target>Feed created successfully!</target>
+            </trans-unit>
+            <trans-unit id="title.feed_new">
+                <source>title.feed_new</source>
+                <target>Add Feed URL</target>
+            </trans-unit>
+            <trans-unit id="label.create_feed">
+                <source>label.create_feed</source>
+                <target>Create Feed</target>
+            </trans-unit>
+            <trans-unit id="feed.updated_successfully">
+                <source>feed.updated_successfully</source>
+                <target>Feed updated successfully!</target>
+            </trans-unit>
+            <trans-unit id="title.edit_feed">
+                <source>title.edit_feed</source>
+                <target>Edit Feed #{id, number}</target>
+            </trans-unit>
+            <trans-unit id="action.back_to_list">
+                <source>action.back_to_list</source>
+                <target>Back to the list</target>
+            </trans-unit>
+            <trans-unit id="feed.deleted_successfully">
+                <source>feed.deleted_successfully</source>
+                <target>Feed deleted successfully!</target>
+            </trans-unit>
+            <trans-unit id="action.delete">
+                <source>action.delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="action.edit">
+                <source>action.edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="menu.homepage">
+                <source>menu.homepage</source>
+                <target>Homepage</target>
+            </trans-unit>
+            <trans-unit id="menu.admin">
+                <source>menu.admin</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="menu.logout">
+                <source>menu.logout</source>
+                <target>Logout</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
