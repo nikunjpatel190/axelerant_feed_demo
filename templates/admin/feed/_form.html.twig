@@ -1,0 +1,15 @@
+{% if show_confirmation|default(false) %}
+    {% set attr = {'data-confirmation': 'true'} %}
+{% endif %}
+
+{{ form_start(form, {attr: attr|default({})}) }}
+    {{ form_widget(form) }}
+
+    <button type="submit" class="{{ button_css|default("btn btn-primary") }}">
+        <i class="fa fa-save" aria-hidden="true"></i> {{ button_label|default('label.create_post'|trans) }}
+    </button>
+
+    <a href="{{ path('admin_feed_index') }}" class="btn btn-link">
+        <i class="fa fa-list-alt" aria-hidden="true"></i> {{ 'action.back_to_list'|trans }}
+    </a>
+{{ form_end(form) }}
