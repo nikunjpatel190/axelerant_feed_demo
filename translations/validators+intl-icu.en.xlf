@@ -6,6 +6,10 @@
                 <source>feed.blank_content</source>
                 <target>Feed URL should not be blank!</target>
             </trans-unit>
+            <trans-unit id="feed.slug_unique">
+                <source>feed.slug_unique</source>
+                <target>This name was already used in another feed post, but they must be unique.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

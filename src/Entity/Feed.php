@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FeedRepository")
  * @ORM\Table(name="feed")
- * @UniqueEntity(fields={"slug"}, errorPath="title", message="post.slug_unique")
+ * @UniqueEntity(fields={"name"}, errorPath="name", message="feed.slug_unique")
  *
  * Defines the properties of the Feed entity to represent the feeds.
  *

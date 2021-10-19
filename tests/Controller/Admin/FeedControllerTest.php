@@ -65,10 +65,10 @@ class FeedControllerTest extends WebTestCase
     }
 
     /**
-     * This test changes the database contents by creating a new feed URL. However,
-     * thanks to the DAMADoctrineTestBundle and its PHPUnit listener, all changes
-     * to the database are rolled back when this test completes. This means that
-     * all the application tests begin with the same database contents.
+     * This test changes the database contents by creating a new feed URL.
+     *
+     * @author Nikunnj Bambhroliya <nikunjpatel190@gmail.com>
+     * @return void
      */
     public function testAdminNewFeed(): void
     {
@@ -93,5 +93,83 @@ class FeedControllerTest extends WebTestCase
         $feed = self::$container->get(FeedRepository::class)->findOneByName($title);
         $this->assertNotNull($feed);
         $this->assertSame($url, $feed->getUrl());
+    }
+
+    /**
+     * This test create a duplicate entries of feeds and check error message.
+     *
+     * @author Nikunnj Bambhroliya <nikunjpatel190@gmail.com>
+     * @return void
+     */
+
+    public function testAdminNewDuplicatedFeed(): void
+    {
+        $title = 'axelerant '.mt_rand();
+        $url = "https://www.axelerant.com/tag/drupal-planet/feed";
+
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'jane_admin',
+            'PHP_AUTH_PW' => 'kitten'
+        ]);
+
+        $crawler = $client->request('GET', '/en/admin/feed/new');
+        $form = $crawler->selectButton('Create Feed')->form([
+            'feed[name]' => $title,
+            'feed[url]' => $url
+        ]);
+        $client->submit($form);
+
+        // Feed name must be unique, so trying to create the same feed twice should result in an error
+        $client->submit($form);
+
+        $this->assertSelectorTextSame('form .form-group.has-error label', 'Feed Name');
+        $this->assertSelectorTextContains('form .form-group.has-error .help-block', 'This name was already used in another feed post, but they must be unique.');
+    }
+    /**
+     * This test changes the database contents by editing a feed post.
+     *
+     * @author Nikunnj Bambhroliya <nikunjpatel190@gmail.com>
+     * @return void
+     */
+    public function testAdminEditPost(): void
+    {
+        $title = 'axelerant '.mt_rand();
+        $url = "https://www.axelerant.com/tag/drupal-planet/feed";
+
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'jane_admin',
+            'PHP_AUTH_PW' => 'kitten',
+        ]);
+        $client->request('GET', '/en/admin/feed/2/edit');
+        $client->submitForm('Save changes', [
+            'feed[name]' => $title,
+            'feed[url]' => $url
+        ]);
+
+        $this->assertResponseRedirects('/en/admin/feed/2/edit', Response::HTTP_FOUND);
+
+        /** @var \App\Entity\Feed $feed */
+        $feed = self::$container->get(FeedRepository::class)->find(2);
+        $this->assertSame($title, $feed->getName());
+    }
+
+    /**
+     * This test changes the database contents by deleting a feed post.
+     *
+     * @author Nikunnj Bambhroliya <nikunjpatel190@gmail.com>
+     * @return void
+     */
+    public function testAdminDeletePost(): void
+    {
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'jane_admin',
+            'PHP_AUTH_PW' => 'kitten',
+        ]);
+        $crawler = $client->request('GET', '/en/admin/feed/21/delete');
+
+        $this->assertResponseRedirects('/en/admin/feed/', Response::HTTP_FOUND);
+
+        $feed = self::$container->get(FeedRepository::class)->find(21);
+        $this->assertNull($feed);
     }
 }
