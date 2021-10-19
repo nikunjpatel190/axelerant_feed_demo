@@ -1,12 +1,8 @@
 <?php
-
 /*
- * This file is part of the Symfony package.
+ * This file is part of unit testing of feed crud
  *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * @au Nikunj Bambhroliya <nikunjpatel190@gmail.com>
  */
 
 namespace App\Tests\Controller\Admin;
