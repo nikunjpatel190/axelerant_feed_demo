@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -101,6 +102,7 @@ class Feed
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
+        $this->feedContents = new ArrayCollection();
     }
 
     public function getId(): ?int
