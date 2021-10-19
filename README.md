@@ -24,3 +24,15 @@ Admin Login User
 username : john_user
 password : kitten
 ```
+
+Unit Testing : 
+------------
+Run Below commands to perform unit tests
+
+```bash
+php bin/console --env=test doctrine:schema:create
+php bin/console doctrine:fixtures:load --env="test"
+
+cd project_directory/
+php ./vendor/bin/phpunit
+```
